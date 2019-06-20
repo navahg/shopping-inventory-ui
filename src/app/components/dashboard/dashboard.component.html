@@ -1,0 +1,22 @@
+<mat-sidenav-container class="dashboard-container">
+  <mat-sidenav mode="side" opened>
+    <div class="menu-items-container">
+      <mat-toolbar color="primary">
+        <mat-toolbar-row style="justify-content: center;">
+          <span>Admin Panel</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <mat-button-toggle-group class="options-container" [(value)]="selectedOption" vertical>
+        <mat-button-toggle class="toolbar-button" value="{{MENU_OPTIONS.PRODUCTS}}" checked>Products</mat-button-toggle>
+        <mat-button-toggle class="toolbar-button" value="{{MENU_OPTIONS.ANALYTICS}}">Analytics</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <div class="footer">
+      <button mat-raised-button color="primary" (click)="doLogout()">Logout</button>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="content-container">
+    <app-product-manager *ngIf="selectedOption === MENU_OPTIONS.PRODUCTS"></app-product-manager>
+    <app-analytics-manager *ngIf="selectedOption === MENU_OPTIONS.ANALYTICS"></app-analytics-manager>
+  </mat-sidenav-content>
+</mat-sidenav-container>
