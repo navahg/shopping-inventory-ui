@@ -34,6 +34,6 @@ export class ProductService {
     // get the api
     const endpoint: any = await fetch(this.config.API_ROOT);
 
-    return this.http.post<object>(`${endpoint.ip}/products`, product);
+    return this.http.post<object>(`http://${endpoint.ip}/products`, product);
   }
 }

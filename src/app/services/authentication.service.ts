@@ -23,7 +23,7 @@ export class AuthenticationService {
     // get the api
     const endpoint: any = await fetch(this.config.API_ROOT);
     // make the api call
-    return this.http.post(`${endpoint.ip}/login/admin`, user,  { observe: 'response' });
+    return this.http.post(`http://${endpoint.ip}/login/admin`, user,  { observe: 'response' });
   }
 
   logout() {

@@ -21,6 +21,6 @@ export class CartService {
     // get the api
     const endpoint: any = await fetch(this.config.API_ROOT);
 
-    return this.http.get<CartItem[]>(`${endpoint.ip}/cart/all`);
+    return this.http.get<CartItem[]>(`http://${endpoint.ip}/cart/all`);
   }
 }
