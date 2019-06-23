@@ -19,8 +19,8 @@ export class CartService {
    */
   async getAllOrders(): Promise<Observable<CartItem[]>> {
     // get the api
-    const endpoint: any = await fetch(this.config.API_ROOT);
+    const endpoint: any = await fetch(this.config.API_ROOT).then(response => response.json());
 
-    return this.http.get<CartItem[]>(`http://${endpoint.ip}/cart/all`);
+    return this.http.get<CartItem[]>(`http://${endpoint.ip}/api/cart/all`);
   }
 }

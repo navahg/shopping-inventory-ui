@@ -21,9 +21,9 @@ export class AuthenticationService {
   async login(username: string, password: string): Promise<Observable<object>> {
     const user: User = { username, password };
     // get the api
-    const endpoint: any = await fetch(this.config.API_ROOT);
+    const endpoint: any = await fetch(this.config.API_ROOT).then(response => response.json());
     // make the api call
-    return this.http.post(`http://${endpoint.ip}/login/admin`, user,  { observe: 'response' });
+    return this.http.post(`http://${endpoint.ip}/api/login/admin`, user,  { observe: 'response' });
   }
 
   logout() {

@@ -21,9 +21,9 @@ export class ProductService {
    */
   async getProducts(): Promise<Observable<Product[]>> {
     // get the api
-    const endpoint: any = await fetch(this.config.API_ROOT);
+    const endpoint: any = await fetch(this.config.API_ROOT).then(response => response.json());
 
-    return this.http.get<Product[]>(`${endpoint.ip}/products`);
+    return this.http.get<Product[]>(`http://${endpoint.ip}/api/products`);
   }
 
   /**
@@ -32,8 +32,8 @@ export class ProductService {
    */
   async addProduct(product: Product): Promise<Observable<object>> {
     // get the api
-    const endpoint: any = await fetch(this.config.API_ROOT);
+    const endpoint: any = await fetch(this.config.API_ROOT).then(response => response.json());
 
-    return this.http.post<object>(`http://${endpoint.ip}/products`, product);
+    return this.http.post<object>(`http://${endpoint.ip}/api/products`, product);
   }
 }
