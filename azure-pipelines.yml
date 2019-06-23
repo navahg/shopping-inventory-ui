@@ -10,6 +10,13 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+# Install the tools required for the docker operations
+- task: CmdLine@2
+  displayName: Install AWS cli
+  inputs:
+    script: |
+      sudo pip3 install pip --upgrade
+      pip install awscli --upgrade --user
 
 # Build and push the docker
 - task: Docker@2
@@ -40,3 +47,4 @@ steps:
       aws eks update-kubeconfig --name terraform-eks-demo
       kubectl apply -f $(Build.SourcesDirectory)/kube-deploy.yaml
       kubectl apply -f $(Build.SourcesDirectory)/kube-service.yaml
+      kubectl set image deployment/shopping-api shopping-api=raghavan16/shopping-api:$(Build.BuildId)
