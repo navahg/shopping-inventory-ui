@@ -44,7 +44,7 @@ steps:
     regionName: 'us-east-1'
     scriptType: 'inline'
     inlineScript: |
-      aws eks update-kubeconfig --name terraform-eks-demo
+      ~/.local/bin/aws eks update-kubeconfig --name terraform-eks-demo
       kubectl apply -f $(Build.SourcesDirectory)/kube-deploy.yaml
       kubectl apply -f $(Build.SourcesDirectory)/kube-service.yaml
       kubectl set image deployment/shopping-ui shopping-api=raghavan16/shopping-ui:$(Build.BuildId)
