@@ -25,12 +25,18 @@ steps:
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
 
-# Deploy on kubernetes
-- task: Kubernetes@1
+# Install Kubectl tool
+- task: KubectlInstaller@0
   inputs:
-    connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'k8s-conn'
-    command: 'set'
-    arguments: 'image deployment/shopping-ui shopping-ui=raghavan16/shopping-ui:$(Build.BuildId)'
-    secretType: 'dockerRegistry'
-    containerRegistryType: 'Azure Container Registry'
+    kubectlVersion: 'latest'
+
+# Update the kubeconfig file to point it to the aws eks cluster
+- task: AWSShellScript@1
+  inputs:
+    awsCredentials: 'aws-conn'
+    regionName: 'us-east-1'
+    scriptType: 'inline'
+    inlineScript: |
+      aws eks update-kubeconfig --name terraform-eks-demo
+      kubectl apply -f $(Build.SourcesDirectory)/kube-deploy.yaml
+      kubectl apply -f $(Build.SourcesDirectory)/kube-service.yaml
