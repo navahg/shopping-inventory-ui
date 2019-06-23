@@ -26,7 +26,6 @@ steps:
     command: 'login'
 - task: Docker@2
   displayName: Build and push the app to Dockerhub
-  enabled: false
   inputs:
     containerRegistry: 'docker-hub-conn'
     repository: 'raghavan16/shopping-ui'
