@@ -28,8 +28,8 @@ export class LoginComponent implements AfterViewInit {
     (window as any).initialize();
   }
 
-  login() {
-    this.authenticationService.login(this.email, this.password)
+  async login() {
+    (await this.authenticationService.login(this.email, this.password))
       .subscribe(
         () => {
           this.authenticationService.currentUser = this.email;

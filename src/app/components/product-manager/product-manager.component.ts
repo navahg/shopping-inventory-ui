@@ -34,8 +34,8 @@ export class ProductManagerComponent implements OnInit {
   /**
    * Fetches all the available products
    */
-  fetchProducts(): void {
-    this.productService.getProducts()
+  async fetchProducts(): Promise<void> {
+    (await this.productService.getProducts())
       .subscribe((products) => {
         if (!products || products.length === 0) {
           return;
@@ -49,8 +49,8 @@ export class ProductManagerComponent implements OnInit {
    * Adds the product to the database
    * @param product The product to be added
    */
-  addProduct(product: Product): void {
-    this.productService.addProduct(product)
+  async addProduct(product: Product): Promise<void> {
+    (await this.productService.addProduct(product))
       .subscribe(() => {
           this.selectedTabIndex = 0;
           this.addProductForm.clearForm();

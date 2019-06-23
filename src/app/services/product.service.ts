@@ -19,15 +19,21 @@ export class ProductService {
    * Fetches the products from the server
    * @return The collection of the products as an observable
    */
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.config.API_ROOT}/products`);
+  async getProducts(): Promise<Observable<Product[]>> {
+    // get the api
+    const endpoint: any = await fetch(this.config.API_ROOT);
+
+    return this.http.get<Product[]>(`${endpoint.ip}/products`);
   }
 
   /**
    * Adds a product to the web site
    * @param product The product to be added
    */
-  addProduct(product: Product): Observable<object> {
-    return this.http.post<object>(`${this.config.API_ROOT}/products`, product);
+  async addProduct(product: Product): Promise<Observable<object>> {
+    // get the api
+    const endpoint: any = await fetch(this.config.API_ROOT);
+
+    return this.http.post<object>(`${endpoint.ip}/products`, product);
   }
 }

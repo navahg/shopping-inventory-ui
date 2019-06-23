@@ -17,7 +17,10 @@ export class CartService {
    * Fetches all the cart items that are ordered
    * @returns The list of cart items that was ordered
    */
-  getAllOrders(): Observable<CartItem[]> {
-    return this.http.get<CartItem[]>(`${this.config.API_ROOT}/cart/all`);
+  async getAllOrders(): Promise<Observable<CartItem[]>> {
+    // get the api
+    const endpoint: any = await fetch(this.config.API_ROOT);
+
+    return this.http.get<CartItem[]>(`${endpoint.ip}/cart/all`);
   }
 }

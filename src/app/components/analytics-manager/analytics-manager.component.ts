@@ -50,8 +50,8 @@ export class AnalyticsManagerComponent implements OnInit {
     this.data = Object.assign([], newData);
   }
 
-  fetchCartItems() {
-    this.cartService.getAllOrders()
+  async fetchCartItems() {
+    (await this.cartService.getAllOrders())
       .subscribe((cartItems = []) => this.processData(cartItems));
   }
 }

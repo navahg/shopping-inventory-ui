@@ -18,10 +18,12 @@ export class AuthenticationService {
     return this.currentUser;
   }
 
-  login(username: string, password: string): Observable<object> {
+  async login(username: string, password: string): Promise<Observable<object>> {
     const user: User = { username, password };
+    // get the api
+    const endpoint: any = await fetch(this.config.API_ROOT);
     // make the api call
-    return this.http.post(`${this.config.API_ROOT}/login/admin`, user,  { observe: 'response' });
+    return this.http.post(`${endpoint.ip}/login/admin`, user,  { observe: 'response' });
   }
 
   logout() {
