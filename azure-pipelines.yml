@@ -17,6 +17,7 @@ steps:
     script: |
       sudo pip3 install pip --upgrade
       pip install awscli --upgrade --user
+      export PATH=$PATH:~/.local/bin
 
 # Build and push the docker
 - task: Docker@2
