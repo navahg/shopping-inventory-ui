@@ -14,9 +14,9 @@ export class ProductManagerComponent implements OnInit {
 
   @ViewChild(AddProductFormComponent) private readonly  addProductForm: AddProductFormComponent;
 
-  private products: Product[];
-  private categories: { [category: string]: Product[] };
-  private selectedTabIndex: number;
+  products: Product[];
+  categories: { [category: string]: Product[] };
+  selectedTabIndex: number;
 
   constructor(
     private snackBar: MatSnackBar,

@@ -10,7 +10,7 @@ export class AddProductFormComponent implements OnInit {
 
   @ViewChild('formElement') formElement: ElementRef;
 
-  private formGroup = new FormGroup({
+  formGroup = new FormGroup({
     name: new FormControl('', [
       Validators.required,
       Validators.minLength(5),

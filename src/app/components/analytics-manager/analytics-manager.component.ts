@@ -10,7 +10,7 @@ import { CartService } from '../../services/cart.service';
 })
 export class AnalyticsManagerComponent implements OnInit {
 
-  private data: AnalyticsElement[];
+  data: AnalyticsElement[];
 
   constructor(
     private cartService: CartService

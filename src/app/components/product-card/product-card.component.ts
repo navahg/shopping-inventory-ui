@@ -7,11 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProductCardComponent implements OnInit {
 
-  @Input() private name: string;
-  @Input() private img: string;
-  @Input() private price: number;
-  @Input() private description: string;
-  @Input() private isInStock: boolean;
+  @Input() name: string;
+  @Input() img: string;
+  @Input() price: number;
+  @Input() description: string;
+  @Input() isInStock: boolean;
 
   constructor() {
   }

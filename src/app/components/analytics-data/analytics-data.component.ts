@@ -15,9 +15,9 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class AnalyticsDataComponent implements OnInit {
 
-  @Input() private data: AnalyticsElement[];
+  @Input() data: AnalyticsElement[];
 
-  private readonly columnNames: string[];
+  readonly columnNames: string[];
   private expandedElement: AnalyticsElement | null;
 
   constructor() {

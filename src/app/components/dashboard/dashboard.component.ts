@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  private readonly MENU_OPTIONS = {
+  readonly MENU_OPTIONS = {
     PRODUCTS: 'products',
     ANALYTICS: 'analytics'
   };
-  private selectedOption: string = this.MENU_OPTIONS.PRODUCTS;
+  selectedOption: string = this.MENU_OPTIONS.PRODUCTS;
 
   @ViewChild(MatButtonToggleGroup) menuOptions: MatButtonToggleGroup;
 
